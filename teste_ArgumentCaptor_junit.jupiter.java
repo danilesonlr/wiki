@@ -252,4 +252,22 @@ public class UpdateFiedDataEventoUnitTest {
       WHERE id_portlet_usuario = 1
       """;
   }
+
+  //TESTE UTILIZANDO REFLECTION PARA METODO PRIVADO.
+
+  @Test
+    public void shouldConfirmFinancialRegisteredTransaction() throws Exception {
+        Method method = PixOperationService.class.getDeclaredMethod("confirmFinancialRegisteredTransaction",
+                SendMoneyOrderForm.class, ApsEnvioPagamentoPixEntity.class,
+                FinancialTransactionSummaryInfo.class, AccountHolderInfo.class);
+        SendMoneyOrderForm pixPaymentRequest = PixOperationServiceHelper.getSendMoneyOrderForm();
+        ApsEnvioPagamentoPixEntity registeredTransaction = PixOperationServiceHelper.getApsEnvioPagamentoPixEntity();
+        FinancialTransactionSummaryInfo transactionSummary = PixOperationServiceHelper.getFinancialTransactionSummaryInfo();
+        AccountHolderInfo accountHolderInfo = PixOperationServiceHelper.getAccountHolderInfo();
+        method.setAccessible(true);
+        method.invoke(pixOperationService, pixPaymentRequest, registeredTransaction, transactionSummary, accountHolderInfo);
+        verify(apsMovimentacaoPixRepository,times(1)).save(any());
+        verify(apsEnvioPagamentoPixRepository,times(1)).save(any());
+    }
+
 }
