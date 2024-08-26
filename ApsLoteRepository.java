@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.List;
 /*
+Doc: https://openjpa.apache.org/builds/2.0.0/apache-openjpa-2.0.0/docs/manual/jpa_langref.html
+
 A função COALESCE é usada em JPQL (Java Persistence Query Language) para retornar o primeiro valor não nulo entre os argumentos fornecidos. Essa função é particularmente útil para lidar com parâmetros opcionais em consultas, como no seu exemplo.
 Além do COALESCE, JPQL oferece várias outras funções que você pode usar. Aqui estão algumas das mais comuns:
 
