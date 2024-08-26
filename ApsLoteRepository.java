@@ -14,7 +14,24 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+/*
+A função COALESCE é usada em JPQL (Java Persistence Query Language) para retornar o primeiro valor não nulo entre os argumentos fornecidos. Essa função é particularmente útil para lidar com parâmetros opcionais em consultas, como no seu exemplo.
+Além do COALESCE, JPQL oferece várias outras funções que você pode usar. Aqui estão algumas das mais comuns:
 
+CONCAT: Concatena duas ou mais strings.
+LENGTH: Retorna o comprimento de uma string.
+LOCATE: Encontra a posição de uma substring dentro de uma string.
+LOWER e UPPER: Converte uma string para minúsculas ou maiúsculas, respectivamente.
+TRIM: Remove espaços em branco de uma string.
+SUBSTRING: Extrai uma substring de uma string.
+ABS: Retorna o valor absoluto de um número.
+MOD: Calcula o módulo (resto da divisão).
+CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP: Retorna a data, hora ou timestamp atuais.
+SIZE: Retorna o tamanho de uma coleção.
+INDEX: Retorna o índice de um valor dentro de uma coleção ordenada.
+NULLIF: Compara dois valores e retorna NULL se eles forem iguais, caso contrário retorna o primeiro valor.
+
+*/
 @Repository
 public interface ApsLoteRepository extends JpaRepository<ApsLoteEntity, Long> {
     @Query("SELECT new br.com.innovatis.amplus.portal.controllers.view.GetLotesView( " +
